@@ -31,16 +31,16 @@ Product.init(
       allowNull: false,
       defaultValue: 10,
       validate: {
-        isNumber: true
-      }
+        isNumber: true,
+      },
     }, 
     category_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'Category',
-        key: 'id'
-      }
-    } 
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
