@@ -21,24 +21,22 @@ router.get('/:id', (req, res) => {
   Category.findOne({
     where: {
       id: req.params.id,
+    },
       include: [Product],
-    }
+    })
       .then((categories) => res.json(categories))
       .catch((err) =>
-        res.status(500).json(err)), 
+        res.status(500).json(err)); 
   });
-});
+
 
 router.post('/', (req, res) => {
   // create a new category
-  Category.create({
-    id: req.body.id,
-    category_name: req.body.category_name,
-  })
-    .then(dbCategoryData => res.json(dbCategoryData))
+  Category.create(req.body)
+    .then(dbCategoryData => res.status(200).json(dbCategoryData))
     .catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json(err);
     });
 });
 
